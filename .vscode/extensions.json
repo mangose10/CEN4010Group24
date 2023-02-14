@@ -1,0 +1,19 @@
+{
+    "recommendations": [
+        "vscjava.vscode-java-debug",
+        "editorconfig.editorconfig",
+        "vscjava.vscode-java-pack",
+        "github.vscode-pull-request-github",
+        "codezombiech.gitignore",
+        "visualstudioexptteam.vscodeintellicode",
+        "visualstudioexptteam.intellicode-api-usage-examples",
+        "redhat.java",
+        "christian-kohler.path-intellisense",
+        "vscjava.vscode-java-dependency",
+        "vscjava.vscode-spring-initializr",
+        "vscjava.vscode-java-test",
+        "mathiasfrohlich.kotlin",
+        "sethjones.kotlin-on-vscode",
+        "TabNine.tabnine-vscode"
+    ]
+}
