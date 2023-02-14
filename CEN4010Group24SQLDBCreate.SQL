@@ -11,7 +11,7 @@ CREATE TABLE `book` (
   `id` int NOT NULL,
   `name` varchar(45) NOT NULL,
   `description` varchar(200) NOT NULL,
-  `price` decimal(8,0) NOT NULL,
+  `price` decimal(8,2) NOT NULL,
   `author` int NOT NULL,
   `copies_sold` int NOT NULL,
   `publisher` varchar(45) NOT NULL,

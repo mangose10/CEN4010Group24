@@ -24,12 +24,12 @@ public class User {
     private String email;
     @Column(name = "address")
     private String address;
-    @Column(name = "home_address")
-    private String home_address;
-    @Column(name = "wishlist_count")
-    private int wishlist_count;
-    @Column(name = "cc_id")
-    private Long cc_id;
+    @Column(name = "homeAddress")
+    private String homeAddress;
+    @Column(name = "wishlistCount")
+    private int wishlistCount;
+    @Column(name = "ccId")
+    private Integer ccId;
 
     public User() {  }
 
@@ -38,16 +38,16 @@ public class User {
         this.setPassword(password);
     }
 
-    public User(int id, String username, String password, String name, String email, String address, String home_address, int wishlist_count, Long cc_id) {
+    public User(int id, String username, String password, String name, String email, String address, String homeAddress, int wishlistCount, Integer ccId) {
         this.setId(id);
         this.setUsername(username);
         this.setPassword(password);
         this.setName(name);
         this.setEmail(email);
         this.setAddress(address);
-        this.setHomeAddress(home_address);
-        this.setWishlistCount(wishlist_count);
-        this.setCCID(cc_id);
+        this.setHomeAddress(homeAddress);
+        this.setWishlistCount(wishlistCount);
+        this.setCCID(ccId);
     }
 
     public int getId() {
@@ -99,27 +99,27 @@ public class User {
     }
 
     public String getHomeAddress() {
-        return home_address;
+        return homeAddress;
     }
 
-    public void setHomeAddress(String home_address) {
-        this.home_address = home_address;
+    public void setHomeAddress(String homeAddress) {
+        this.homeAddress = homeAddress;
     }
 
-    public Long getCCID() {
-        return cc_id;
+    public Integer getCCID() {
+        return ccId;
     }
 
-    public void setCCID(Long cc_id) {
-        this.cc_id = cc_id;
+    public void setCCID(Integer ccId) {
+        this.ccId = ccId;
     }
 
     public int getWishlistCount() {
-        return wishlist_count;
+        return wishlistCount;
     }
 
-    public void setWishlistCount(int wishlist_count) {
-        this.wishlist_count = wishlist_count;
+    public void setWishlistCount(int wishlistCount) {
+        this.wishlistCount = wishlistCount;
     }
 
     @Override
@@ -131,9 +131,9 @@ public class User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", address='" + address + '\'' +
-                ", home_address='" + home_address + '\'' + 
-                ", wishlist_count='" + wishlist_count + '\'' +
-                ", cc_id='" + String.valueOf(cc_id) + '\'' +
+                ", homeAddress='" + homeAddress + '\'' + 
+                ", wishlistCount='" + wishlistCount + '\'' +
+                ", ccId='" + String.valueOf(ccId) + '\'' +
                 '}';
     }
 }

@@ -14,10 +14,10 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "card_number")
-    private String card_number;
-    @Column(name = "security_code")
-    private String security_code;
+    @Column(name = "cardNumber")
+    private String cardNumber;
+    @Column(name = "securityCode")
+    private String securityCode;
     @Column(name = "name")
     private String name;
     @Column(name = "expiration")
@@ -25,10 +25,12 @@ public class CreditCard {
     @Column(name = "address")
     private String address;
 
-    public CreditCard(int id, String card_number, String security_code, String name, String expiration, String address) {
+    public CreditCard() {  }
+
+    public CreditCard(int id, String cardNumber, String securityCode, String name, String expiration, String address) {
         this.setId(id);
-        this.setCardNumber(card_number);
-        this.setSecurityCode(security_code);
+        this.setCardNumber(cardNumber);
+        this.setSecurityCode(securityCode);
         this.setName(name);
         this.setExpiration(expiration);
         this.setAddress(address);
@@ -43,19 +45,19 @@ public class CreditCard {
     }
 
     public String getCardNumber() {
-        return card_number;
+        return cardNumber;
     }
 
-    public void setCardNumber(String card_number) {
-        this.card_number = card_number;
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
     }
 
     public String getSecurityCode() {
-        return security_code;
+        return securityCode;
     }
 
-    public void setSecurityCode(String security_code) {
-        this.security_code = security_code;
+    public void setSecurityCode(String securityCode) {
+        this.securityCode = securityCode;
     }
 
     public String getName() {
@@ -84,12 +86,12 @@ public class CreditCard {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "CreditCard{" +
                 "id=" + id +
-                ", username='" + card_number + '\'' +
-                ", password='" + security_code + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", securityCode='" + securityCode + '\'' +
                 ", name='" + name + '\'' +
-                ", email='" + expiration + '\'' +
+                ", expiration='" + expiration + '\'' +
                 ", address='" + address + '\'' +
                 '}';
     }
