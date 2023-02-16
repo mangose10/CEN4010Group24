@@ -7,11 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import Group24.LibApp.Models.Book;
-import Group24.LibApp.Models.Rating;
 import Group24.LibApp.Models.GenreItem;
 
 import Group24.LibApp.Repositories.BookRepository;
@@ -144,10 +144,20 @@ public class SearchController {
 		}
 	}
 
-    @GetMapping("/here")
-    public String test(){
-        return "here";
-    }
+    @PutMapping("/search/updatePriceByDiscount")
+	public ResponseEntity<List<Book>> updateBookPriceByDiscount(@RequestParam String publisher, @RequestParam Double discount) {
+		List<Book> books = bookRepository.findByPublisher(publisher);
+        
+		if (!books.isEmpty()) {
+            for (Book book : books) {
+                Double newPrice = (1 - discount) * book.getPrice();
+                book.setPrice(newPrice);
+            }
+			return new ResponseEntity<>(bookRepository.saveAll(books), HttpStatus.OK);
+		} else {
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+		}
+	}
 
 }
  
