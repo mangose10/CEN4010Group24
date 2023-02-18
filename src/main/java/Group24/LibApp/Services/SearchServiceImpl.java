@@ -1,13 +1,12 @@
 package Group24.LibApp.Services;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import Group24.LibApp.Models.Book;
+import Group24.LibApp.Models.Genre;
 import Group24.LibApp.Models.GenreItem;
 import Group24.LibApp.Repositories.BookRepository;
 import Group24.LibApp.Repositories.GenreItemRepository;
@@ -29,53 +28,8 @@ public class SearchServiceImpl implements SearchService {
     }
 
     @Override
-    public List<Book> getBooksByGenre(String genres, String operation) {
-        List<Book> books = new ArrayList<Book>();
-
-        if (genres == null)
-            bookRepository.findAll().forEach(books::add);
-        else {
-            List<String> genreNames = Arrays.asList(genres.split(";"));
-            int numGenres = genreNames.size();
-
-            List<GenreItem> genreItemObj = new ArrayList<GenreItem>();
-
-            if (operation == null || operation.equals("AND")){
-                for (int i = 0; i < numGenres;i++) {
-                    List<GenreItem> tmpGenreItem = new ArrayList<GenreItem>();
-                    List<Book> tmpBooks = new ArrayList<Book>();
-
-                    int genreId = genreRepository.findByGenreName(genreNames.get(i)).getId();
-                    genreItemRepository.findByGenreId(genreId).forEach(tmpGenreItem::add);
-
-                    for (GenreItem genreItem : tmpGenreItem) {
-                        Book curBook = bookRepository.findById(genreItem.getBookId());
-                        if (!tmpBooks.contains(curBook))
-                            tmpBooks.add(curBook);
-                    }
-
-                    if (i == 0){
-                        books = tmpBooks;
-                    }else{
-                        for (Book book : books){
-                            if (!tmpBooks.contains(book))
-                                books.remove(book);
-                        }
-                    }
-                }
-            }else if(operation.equals("OR")){
-                for (String genre : genreNames) {
-                    int genreId = genreRepository.findByGenreName(genre).getId();
-                    genreItemRepository.findByGenreId(genreId).forEach(genreItemObj::add);
-                }
-                for (GenreItem genreItem : genreItemObj) {
-                    Book curBook = bookRepository.findById(genreItem.getBookId());
-                    if (!books.contains(curBook))
-                        books.add(curBook);
-                }
-            }
-        }
-        return books;
+    public Book getBooksById(Integer id) {
+        return bookRepository.findById(id);
     }
 
     @Override
@@ -103,6 +57,16 @@ public class SearchServiceImpl implements SearchService {
 		}
 
         return false;
+    }
+
+    @Override
+    public Genre getGenreByName(String name) {
+        return genreRepository.findByGenreName(name);
+    }
+
+    @Override
+    public List<GenreItem> getGenreItemByGenreId(Integer id) {
+        return genreItemRepository.findByGenreId(id);
     }
     
 }
