@@ -1,5 +1,6 @@
 package Group24.LibApp.Repositories;
 
+import Group24.LibApp.Models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
