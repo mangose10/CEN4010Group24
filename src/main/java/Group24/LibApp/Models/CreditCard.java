@@ -1,23 +1,29 @@
 package Group24.LibApp.Models;
 
 public class CreditCard {
+    private String user;
     private String number;
-    private String cvv;
+    private int cvv;
     private String expirationDate;
 
     // constructor
-    public CreditCard(String number, String cvv, String expirationDate) {
+    public CreditCard(String user, String number, int cvv, String expirationDate) {
+        this.user = user;
         this.number = number;
         this.cvv = cvv;
         this.expirationDate = expirationDate;
     }
 
     // getters
+    public String getUser() {
+        return user;
+    }
+
     public String getNumber() {
         return number;
     }
 
-    public String getCvv() {
+    public int getCvv() {
         return cvv;
     }
 
@@ -26,15 +32,20 @@ public class CreditCard {
     }
 
     // setters
+    public void setUser(String user) {
+        this.user = user;
+    }
+
     public void setNumber(String number) {
         this.number = number;
     }
 
-    public void setCvv(String cvv) {
+    public void setCvv(int cvv) {
         this.cvv = cvv;
     }
 
     public void setExpirationDate(String expirationDate) {
         this.expirationDate = expirationDate;
     }
+
 }

@@ -16,9 +16,9 @@ public class CreditCardController {
     
     @PostMapping("/{username}")
     public ResponseEntity<?> createCreditCard(@PathVariable String username, @RequestBody CreditCard creditCard) {
-        // Check if user exists
-        if (creditCardRepository.existsByUser_Username(username)) {
-            creditCard.setUser(creditCardRepository.findByUser_Username(username).getUser());
+        // determines if user exists
+        if (creditCardRepository.existsByUser(username)) {
+            creditCard.setUser(creditCardRepository.findByUser(username).getUser());
             creditCardRepository.save(creditCard);
             return ResponseEntity.ok().build();
         } else {

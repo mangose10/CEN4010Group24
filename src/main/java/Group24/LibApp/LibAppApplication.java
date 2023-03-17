@@ -12,9 +12,4 @@ public class LibAppApplication {
 		SpringApplication.run(LibAppApplication.class, args);
 	}
 
-    @GetMapping("/")
-    public String greet() {
-        return "Hello";
-    }
-
 }
