@@ -1,12 +1,27 @@
 package Group24.LibApp.Models;
 import java.time.LocalDate;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+@Entity
+@Table(name = "creditcard")
 public class CreditCard {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     //instantiating variables
+    @Column(name = "id")
     private Long id;
+    @Column(name = "holderName")
     private String holderName;
+    @Column(name = "cardNumber")
     private String cardNumber;
+    @Column(name = "expirationDate")
     private LocalDate expirationDate;
+    @Column(name = "cvv")
     private int cvv;
 
     //default constructor
