@@ -1,9 +1,5 @@
 package Group24.LibApp.Services;
 
-<<<<<<< Updated upstream
-public class CreditCardService implements CreditCardService {
-    private CreditCardRepository creditCardRepository;
-=======
 import java.time.LocalDate;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -21,6 +17,4 @@ public class CreditCardService {
                 456)
                 );
     }
-    
->>>>>>> Stashed changes
 }
