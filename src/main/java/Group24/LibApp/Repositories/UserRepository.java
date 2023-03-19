@@ -1,5 +1,6 @@
 package Group24.LibApp.Repositories;
 
+<<<<<<< Updated upstream
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -11,3 +12,8 @@ import Group24.LibApp.Models.User;
 public interface UserRepository extends JpaRepository<User, String> {
     List<User> findByUsername(String username);
 }
+=======
+public class UserRepository {
+    
+}
+>>>>>>> Stashed changes

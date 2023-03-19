@@ -1,5 +1,6 @@
 package Group24.LibApp.Services;
 
+<<<<<<< Updated upstream
 import Group24.LibApp.Models.CreditCard;
 import Group24.LibApp.Models.User;
 import Group24.LibApp.Repositories.UserRepository;
@@ -33,3 +34,23 @@ public class UserService {
     }
 
 }
+=======
+import java.util.List;
+import org.springframework.stereotype.Service;
+import Group24.LibApp.Models.User;
+
+@Service
+public class UserService {
+    
+    public List<User> getUser() {
+        return List.of(
+            new User(
+            "vr1", 
+            "1234", 
+            "jane doe", 
+            "jdoe@email.com", 
+            "451 cherry lane")
+        );
+    }
+}
+>>>>>>> Stashed changes
