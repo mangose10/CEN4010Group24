@@ -29,7 +29,8 @@ public class CreditCard {
     }
 
     //constructor
-    public CreditCard(String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
+    public CreditCard(Long id, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
+        this.id = id;
         this.holderName = holderName;
         this.cardNumber = cardNumber;
         this.expirationDate =  expirationDate;

@@ -1,6 +1,5 @@
 package Group24.LibApp.Services;
 
-import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,8 @@ public class CreditCardService {
         return creditCardRepository.findAll();
     }
 
-    public List<CreditCard> getCreditCard() {
-        return List.of(
-            new CreditCard(
-            "jane doe", 
-            "123 456 789", 
-            LocalDate.of(26, null, 12), 
-            456)
-            );
+    public void addCreditCard(CreditCard creditCard) {
+        creditCardRepository.save(creditCard);
     }
+
 }
