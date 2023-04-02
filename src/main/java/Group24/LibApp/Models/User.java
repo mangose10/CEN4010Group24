@@ -12,6 +12,8 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     //instantiating variables
+    @Column(name = "id")
+    private int id;
     @Column(name = "username")
     private String username; 
     @Column(name = "password")
@@ -29,7 +31,8 @@ public class User {
     }
 
     // constructor
-    public User(String username, String password, String name, String email, String address) {
+    public User(int id, String username, String password, String name, String email, String address) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -38,6 +41,14 @@ public class User {
     }
 
     // getters and setters
+    public int getID() {
+        return id;
+    }
+
+    public void setID(int id) {
+        this.id = id;
+    }
+
     public String getUsername() {
         return username;
     }
@@ -82,7 +93,8 @@ public class User {
     @Override
     public String toString() {
         return 
-        "User [Username:" + username + 
+        "User [ID:" + id + 
+        "\nUsername:" + username + 
         "\nPassword:" + password + 
         "\nName:" + name + 
         "\nEmail:" + email

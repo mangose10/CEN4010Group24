@@ -14,7 +14,7 @@ public class CreditCard {
     @GeneratedValue(strategy = GenerationType.AUTO)
     //instantiating variables
     @Column(name = "id")
-    private Long id;
+    private int id;
     @Column(name = "holderName")
     private String holderName;
     @Column(name = "cardNumber")
@@ -29,7 +29,7 @@ public class CreditCard {
     }
 
     //constructor
-    public CreditCard(Long id, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
+    public CreditCard(int id, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
         this.id = id;
         this.holderName = holderName;
         this.cardNumber = cardNumber;
@@ -38,11 +38,11 @@ public class CreditCard {
     }
 
     //getters and setters
-    public Long getID() {
+    public int getID() {
         return id;
     }
 
-    public void setID(Long id) {
+    public void setID(int id) {
         this.id = id;
     }
 
