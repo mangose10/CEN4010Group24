@@ -1,4 +1,5 @@
 package Group24.LibApp.Models;
+import java.time.LocalDate;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -6,42 +7,51 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
 @Entity
 @Table(name = "creditcard")
 public class CreditCard {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    //instantiating variables
+    @Column(name = "id")
     private int id;
-
+    @Column(name = "holderName")
+    private String holderName;
     @Column(name = "cardNumber")
     private String cardNumber;
-    @Column(name = "securityCode")
-    private String securityCode;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "expiration")
-    private String expiration;
-    @Column(name = "address")
-    private String address;
+    @Column(name = "expirationDate")
+    private LocalDate expirationDate;
+    @Column(name = "cvv")
+    private int cvv;
 
-    public CreditCard() {  }
-
-    public CreditCard(int id, String cardNumber, String securityCode, String name, String expiration, String address) {
-        this.setId(id);
-        this.setCardNumber(cardNumber);
-        this.setSecurityCode(securityCode);
-        this.setName(name);
-        this.setExpiration(expiration);
-        this.setAddress(address);
+    //default constructor
+    public CreditCard() {
     }
 
-    public int getId() {
+    //constructor
+    public CreditCard(int id, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
+        this.id = id;
+        this.holderName = holderName;
+        this.cardNumber = cardNumber;
+        this.expirationDate =  expirationDate;
+        this.cvv = cvv;
+    }
+
+    //getters and setters
+    public int getID() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setID(int id) {
         this.id = id;
+    }
+
+    public String getHolderName() {
+        return holderName;
+    }
+    
+    public void setHolderName(String holderName) {
+        this.holderName = holderName;
     }
 
     public String getCardNumber() {
@@ -52,47 +62,30 @@ public class CreditCard {
         this.cardNumber = cardNumber;
     }
 
-    public String getSecurityCode() {
-        return securityCode;
+    public LocalDate getExpirationDate() {
+        return expirationDate;
     }
 
-    public void setSecurityCode(String securityCode) {
-        this.securityCode = securityCode;
+    public void setExpirationDate(LocalDate expirationDate) {
+        this.expirationDate = expirationDate;
     }
 
-    public String getName() {
-        return name;
+    public int getCVV() {
+        return cvv;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCVV(int cvv) {
+        this.cvv = cvv;
     }
 
-    public String getExpiration() {
-        return expiration;
-    }
-
-    public void setExpiration(String expiration) {
-        this.expiration = expiration;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
+    //returns string of Credit Card information
     @Override
     public String toString() {
-        return "CreditCard{" +
-                "id=" + id +
-                ", cardNumber='" + cardNumber + '\'' +
-                ", securityCode='" + securityCode + '\'' +
-                ", name='" + name + '\'' +
-                ", expiration='" + expiration + '\'' +
-                ", address='" + address + '\'' +
-                '}';
+        return 
+        "CreditCard [ID:" + id + 
+        "\nHolder Name:" + holderName + 
+        "\nCard Number:" + cardNumber + 
+        "\n Expiration Date:" + expirationDate + 
+        "\nCVV:" + cvv + "]";
     }
 }
