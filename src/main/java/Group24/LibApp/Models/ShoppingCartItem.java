@@ -11,12 +11,11 @@ import jakarta.persistence.Table;
 @Table(name = "shoppingcartitem")
 public class ShoppingCartItem {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @Column(name = "bookId")
+    @Column(name = "book_id")
     private Integer bookId;
-    @Column(name = "userId")
+    @Column(name = "user_id")
     private Integer userId;
 
     public ShoppingCartItem() {}
@@ -54,9 +53,9 @@ public class ShoppingCartItem {
     @Override
     public String toString() {
         return "ShoppingCartItem{" +
-                "id=" + id +
-                ", bookId='" + String.valueOf(bookId) + '\'' +
-                ", userId='" + String.valueOf(userId) + '\'' +
+                "id=" + id + 
+                ", book_id='" + String.valueOf(bookId) + '\'' +
+                ", user_id='" + String.valueOf(userId) + '\'' +
                 '}';
     }
 }
