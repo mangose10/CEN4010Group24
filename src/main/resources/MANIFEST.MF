@@ -1,2 +1,2 @@
 Manifest-Version: 1.0
-Main-Class: com.example.BooksapiApplication
+Main-Class: Group24.LibApp.LibAppApplication
