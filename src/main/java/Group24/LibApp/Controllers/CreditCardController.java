@@ -11,7 +11,7 @@ import Group24.LibApp.Models.CreditCard;
 import Group24.LibApp.Services.CreditCardService;
 
 @RestController //annotation makes class serve rest endpoints
-@RequestMapping(path = "/credit-card")
+@RequestMapping("/credit-card")
 public class CreditCardController {
 
     @Autowired
@@ -23,7 +23,7 @@ public class CreditCardController {
 
     //String holderName, String cardNumber, LocalDate expirationDate, int cvv
 
-    @GetMapping //annotation gets data returned by class out of server (rest endpoint)
+    @GetMapping("/add-creditcard") //annotation gets data returned by class out of server (rest endpoint)
     public ResponseEntity<Void> createCreditCard(
         @RequestParam(value = "username", defaultValue = "") String username,
         @RequestParam(value = "creditCard") CreditCard creditCard

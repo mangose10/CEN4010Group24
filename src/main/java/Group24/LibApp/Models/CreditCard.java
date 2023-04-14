@@ -15,6 +15,8 @@ public class CreditCard {
     //instantiating variables
     @Column(name = "id")
     private int id;
+    @Column(name = "username")
+    private String username;
     @Column(name = "holderName")
     private String holderName;
     @Column(name = "cardNumber")
@@ -29,8 +31,9 @@ public class CreditCard {
     }
 
     //constructor
-    public CreditCard(int id, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
+    public CreditCard(int id, String username, String holderName, String cardNumber, LocalDate expirationDate, int cvv) {
         this.id = id;
+        this.username = username;
         this.holderName = holderName;
         this.cardNumber = cardNumber;
         this.expirationDate =  expirationDate;
@@ -44,6 +47,14 @@ public class CreditCard {
 
     public void setID(int id) {
         this.id = id;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getHolderName() {
@@ -82,10 +93,12 @@ public class CreditCard {
     @Override
     public String toString() {
         return 
-        "CreditCard [ID:" + id + 
-        "\nHolder Name:" + holderName + 
+        "Credit Card [ID:" + id + 
+        "\nUsername:" + username + 
+        "Holder Name:" + holderName + 
         "\nCard Number:" + cardNumber + 
-        "\n Expiration Date:" + expirationDate + 
+        "\nExpiration Date:" + expirationDate + 
         "\nCVV:" + cvv + "]";
     }
+    
 }
