@@ -145,7 +145,7 @@ public class SearchControllerIntegrationTest extends AbstractTest {
     public void getGenreANDSingle() throws Exception {
         
         for (int i = 1; i <= 5; i++) {
-            String uri = "/search/genre?genres="+String.valueOf(i)+"&operation=AND";
+            String uri = "/search/genre?genres="+String.valueOf(i);
             when(searchService.getGenreByName(String.valueOf(i))).thenReturn(genreList.get(i-1));
             ArrayList<GenreItem> tmpGIList = getGIByGId(i);
             when(searchService.getGenreItemByGenreId(i)).thenReturn(tmpGIList);
@@ -181,7 +181,7 @@ public class SearchControllerIntegrationTest extends AbstractTest {
                 if (i == j)
                     continue;
 
-                String uri = "/search/genre?genres="+String.valueOf(i)+";"+String.valueOf(j)+"&operation=AND";
+                String uri = "/search/genre?genres="+String.valueOf(i)+";"+String.valueOf(j);
                 when(searchService.getGenreByName(String.valueOf(i))).thenReturn(genreList.get(i-1));
                 when(searchService.getGenreByName(String.valueOf(j))).thenReturn(genreList.get(j-1));
                 ArrayList<GenreItem> tmpGIListi = getGIByGId(i);
@@ -329,7 +329,7 @@ public class SearchControllerIntegrationTest extends AbstractTest {
     }
 
     @Test
-    public void getUpdatePrice() throws Exception {
+    public void putUpdatePrice() throws Exception {
         
         Random r = new Random();
         Double discount = 1 * r.nextDouble();

@@ -138,7 +138,7 @@ public class SearchController {
 	public ResponseEntity<String> updateBookPriceByDiscount(@RequestParam String publisher, @RequestParam Double discount) {
         
 		if (searchService.updateBookPriceByDiscount(publisher, discount))
-			return new ResponseEntity<>("Updated Book prices with '" + publisher + "' as the publisher", HttpStatus.OK);
+			return new ResponseEntity<>(HttpStatus.OK);
 		
         return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
