@@ -16,22 +16,59 @@ public class AuthorController {
 
     private static Map<Integer, Author> authors = new HashMap<>();
     private static Map<Integer, List<Book>> authorBooks = new HashMap<>();
+    private int authorId = 0;
 
     @PostMapping
-    public ResponseEntity<Object> addAuthor(@RequestBody Author author) {
-        int id = authors.size() + 1;
-        authors.put(id, author);
-        authorBooks.put(id, new ArrayList<>());
-        return new ResponseEntity<>("Author is created successfully", HttpStatus.CREATED);
+    public ResponseEntity<AuthorResponse> addAuthor(@RequestBody Author author) {
+        authorId++;
+        authors.put(authorId, author);
+        authorBooks.put(authorId, new ArrayList<>());
+        return new ResponseEntity<>(new AuthorResponse(authorId, "Author is created successfully"), HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
+    @PostMapping("/{id}/books")
+    public ResponseEntity<Object> addBookToAuthor(@PathVariable("id") int id, @RequestBody Book book) {
+        List<Book> books = authorBooks.get(id);
+        if (books == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        books.add(book);
+        return new ResponseEntity<>("Book is added to author successfully", HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}/books")
     public ResponseEntity<List<Book>> getBooksByAuthor(@PathVariable("id") int id) {
         List<Book> books = authorBooks.get(id);
         if (books == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         return new ResponseEntity<>(books, HttpStatus.OK);
+    }
+
+    public static class AuthorResponse {
+        private int id;
+        private String message;
+
+        public AuthorResponse(int id, String message) {
+            this.id = id;
+            this.message = message;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
     }
 
 }
