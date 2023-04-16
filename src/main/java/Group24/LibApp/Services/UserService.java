@@ -30,7 +30,7 @@ public class UserService {
     }
 
     public static List<User> findByUsername(String username) {
-        return userRepository.findByUsername(username); //FIX: Cannot make a static reference to the non-static field userRepositoryJava(33554506)
+        return userRepository.findByUsername(username); 
     }
 
 }
