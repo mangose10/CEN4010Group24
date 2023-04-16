@@ -26,7 +26,7 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping("/createuser") //annotation gets data returned by class out of server (rest endpoint)
+    @PostMapping("/create-user") //annotation gets data returned by class out of server (rest endpoint)
     public ResponseEntity<Void> createUser(
         @RequestParam(value = "user") User user) { //HTTP response / param find and return user
 
@@ -38,7 +38,7 @@ public class UserController {
         return ResponseEntity.ok().build();
     }
 
-    @GetMapping("/finduser/{username}") //annotation gets data returned by class out of server (rest endpoint)
+    @GetMapping("/find-user/{username}") //annotation gets data returned by class out of server (rest endpoint)
     public ResponseEntity<User> getUser(@RequestParam(value = "username", defaultValue = "") String username) { //HTTP response / param find and return user
         if(username.isEmpty()){
             return ResponseEntity.badRequest().build(); //username not provided
@@ -51,7 +51,7 @@ public class UserController {
         return ResponseEntity.notFound().build(); //in case no user is found
     }
 
-    @PutMapping("/updateuser")
+    @PutMapping("/update-user/{username}")
     public ResponseEntity<User> updateUser(@RequestParam(value = "username", defaultValue = "") String username, @RequestBody User updatedUser) {
         List<User> usersToUpdate = UserService.findByUsername(username);
         if(usersToUpdate == null || usersToUpdate.isEmpty()) {
@@ -64,8 +64,7 @@ public class UserController {
         userToUpdate.setName(updatedUser.getName());
         userToUpdate.setAddress(updatedUser.getAddress());
 
-        UserService us = new UserService(null);
-        us.updateUser(userToUpdate); 
+        userService.updateUser(userToUpdate); // Use the injected userService bean
 
         return ResponseEntity.ok(userToUpdate);
     }
